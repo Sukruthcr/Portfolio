@@ -1,0 +1,30 @@
+# Global build settings for the frontend
+[build]
+  # Directory to change to before starting a build.
+  base = "app/frontend"
+  
+  # The command to build the React app.
+  command = "npm run build"
+  
+  # The directory that contains the built site.
+  # Netlify will deploy this directory.
+  publish = "app/frontend/build"
+
+# Settings for Netlify Functions (your Python backend)
+[functions]
+  # Directory where the serverless functions are located.
+  directory = "app/backend"
+
+# Redirect and rewrite rules
+[[redirects]]
+  # Rewrite API calls to the Python backend function.
+  from = "/api/*"
+  to = "/.netlify/functions/server"
+  status = 200 # This makes it a rewrite (proxy)
+
+[[redirects]]
+  # SPA fallback rule for React Router.
+  # All other requests go to the main index.html file.
+  from = "/*"
+  to = "/index.html"
+  status = 200
