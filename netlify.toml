@@ -8,7 +8,7 @@
   
   # The directory that contains the built site.
   # Netlify will deploy this directory.
-  publish = "app/frontend/build"
+  publish = "build"
 
 # Settings for Netlify Functions (your Python backend)
 [functions]
