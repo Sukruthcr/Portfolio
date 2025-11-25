@@ -3,7 +3,10 @@
     {
       "src": "app/frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
+      "config": {
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
+      }
     },
     {
       "src": "app/backend/server.py",
@@ -14,7 +17,7 @@
     { "source": "/api/(.*)", "destination": "/app/backend/server.py" },
     {
       "source": "/(.*)",
-      "destination": "/app/frontend/build/index.html"
+      "destination": "/index.html"
     }
   ]
 }
